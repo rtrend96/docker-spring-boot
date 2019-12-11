@@ -1,0 +1,16 @@
+version: "3"
+services:
+  pet_spring:
+    image: endrizylali/docker-spring-boot
+    ports:
+      - "8081:8080"
+    links:
+      - "pet_mysql:mysql"
+    depends_on:
+      - pet_mysql
+    tty: true
+  pet_mysql:
+    image: mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=mypassword
+      - MYSQL_DATABASE=db_pet  
